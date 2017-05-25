@@ -38,9 +38,34 @@ class Solution(object):
 
         return head
 
+    def bracket2(self, s):
+        bracketBuf = list(s)
+
+        head = 0
+        tail = len(bracketBuf) - 1
+        #print(tail)
+        openBracket = 0
+        closeBracket = 0
+
+        while head < tail:
+            if bracketBuf[head] != '(':
+                head += 1
+            elif bracketBuf[tail] != ')':
+                tail -=1
+            else:
+                openBracket += 1
+                closeBracket += 1
+                head += 1
+                tail -=1
+
+        if head == tail:
+            return head+1
+        else:
+            return head
+
 
 
 if __name__ == "__main__":
-    #print(Solution().bracket("()()()()()"))
-    #print(Solution().bracket("(())))("))   
-    print(Solution().bracket("((())))("))     
+    print(Solution().bracket2("()()()()()"))
+    print(Solution().bracket2("(())))("))   
+    print(Solution().bracket2("((())))("))     
